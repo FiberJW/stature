@@ -1,0 +1,35 @@
+{
+  "name": "stature",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "bsb -clean-world -make-world && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{re,rei}": ["refmt --in-place", "git add"],
+    "*.{js,json,md}": ["prettier --write", "git add"]
+  },
+  "keywords": ["BuckleScript", "react", "reasonml"],
+  "author": "Juwan Wheatley <datwheat@gmail.com> (jwheatley.co)",
+  "homepage": "https://github.com/FiberJW/stature",
+  "repository": "https://github.com/FiberJW/stature",
+  "bugs": {
+    "url": "https://github.com/FiberJW/stature/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "bs-platform": "^3.0.0",
+    "husky": "^0.15.0-rc.8",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.10.2"
+  },
+  "dependencies": {
+    "reason-react": "^0.4.1"
+  }
+}
