@@ -1,7 +1,7 @@
 # Stature
 
-<center>
+<p align="center">
   <img src="./stat.jpg" width="256" />
-</center>
+</p>
 
 docs coming soon ...
