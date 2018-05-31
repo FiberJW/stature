@@ -1,12 +1,12 @@
-module type ContextConfig = {
+module type StoreConfig = {
   let debugName: string;
-  /* the type of data in this context */
+  /* the type of data in this Store */
   type t;
-  /* The current value of the context */
+  /* The initial value of the Store */
   let value: t;
 };
 
-module CreateContext = (C: ContextConfig) => {
+module CreateStore = (C: StoreConfig) => {
   type action =
     | ChangeState(C.t);
   let state = ref(C.value);
@@ -24,23 +24,9 @@ module CreateContext = (C: ContextConfig) => {
     state := newState;
     Js.Array.forEach(f => f(newState), subscriptions^);
   };
-  module Provider = {
-    let component =
-      ReasonReact.statelessComponent(C.debugName ++ "ContextProvider");
-    let make = (~value=?, ~render, _children) => {
-      ...component,
-      shouldUpdate: _self => false,
-      willReceiveProps: _self => updateState(value),
-      didMount: _self => {
-        updateState(value);
-        ();
-      },
-      render: _self => render(),
-    };
-  };
   module Consumer = {
     let component =
-      ReasonReact.reducerComponent(C.debugName ++ "ContextConsumer");
+      ReasonReact.reducerComponent(C.debugName ++ "StoreConsumer");
     let make = (~render, _children) => {
       ...component,
       initialState: () => state^,
