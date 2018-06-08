@@ -11,17 +11,17 @@ Run `yarn add stature` and add `"stature"` to your BuckleScript dependencies lis
 ## Using the Library
 
 ```reason
-// configuring your store
+/* configuring your store */
 module CounterConfig = {
   type t = int;
   let debugName = "Counter";
   let value = 0;
 };
 
-// creating your store
+/* creating your store */
 module CounterStore = Stature.CreateStore(CounterConfig);
 
-// accessing state in ui
+/* accessing state in ui */
 <CounterStore.Consumer
   render=(
     state =>
@@ -34,6 +34,6 @@ module CounterStore = Stature.CreateStore(CounterConfig);
   )
 />
 
-// accessing state outside of a Consumer
+/* accessing state outside of a Consumer */
 let oneUpped = CounterStore.state^ + 1;
 ```
