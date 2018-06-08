@@ -29,8 +29,11 @@ module CounterStore = Stature.CreateStore(CounterConfig);
       <Text>
         (ReasonReact.stringToElement(string_of_int(state)))
       </Text>
-      <Button onPress=(() => CounterStore.updateState(Some(CounterContext.state^ + 1)) label="Increment Counter" />
+      <Button onPress=(() => CounterStore.updateState(Some(state + 1)) label="Increment Counter" />
     </View>
   )
 />
+
+// accessing state outside of a Consumer
+let oneUpped = CounterStore.state^ + 1;
 ```
