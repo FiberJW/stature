@@ -11,6 +11,8 @@ Run `yarn add stature` and add `"stature"` to your BuckleScript dependencies lis
 ## Using the Library
 
 ```reason
+open BsReactNative;
+
 /* configuring your store */
 module CounterConfig = {
   type t = int;
