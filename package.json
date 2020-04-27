@@ -8,7 +8,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "bsb -clean-world -make-world"
+      "pre-commit": "bsb -clean-world -make-world && lint-staged"
     }
   },
   "lint-staged": {
@@ -35,9 +35,9 @@
   "license": "MIT",
   "devDependencies": {
     "bs-platform": "^7.3.1",
-    "husky": "^0.15.0-rc.8",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.10.2"
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.7",
+    "prettier": "^2.0.5"
   },
   "dependencies": {
     "reason-react": "^0.7.1",
