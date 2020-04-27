@@ -13,12 +13,10 @@
   },
   "lint-staged": {
     "*.{re,rei}": [
-      "refmt --in-place",
-      "git add"
+      "refmt --in-place"
     ],
     "*.{js,json,md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "keywords": [
