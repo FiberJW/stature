@@ -12,10 +12,18 @@
     }
   },
   "lint-staged": {
-    "*.{re,rei}": ["refmt --in-place", "git add"],
-    "*.{js,json,md}": ["prettier --write", "git add"]
+    "*.{re,rei}": [
+      "refmt --in-place"
+    ],
+    "*.{js,json,md}": [
+      "prettier --write"
+    ]
   },
-  "keywords": ["BuckleScript", "react", "reasonml"],
+  "keywords": [
+    "BuckleScript",
+    "react",
+    "reasonml"
+  ],
   "author": "Juwan Wheatley <datwheat@gmail.com> (jwheatley.co)",
   "homepage": "https://github.com/FiberJW/stature",
   "repository": "https://github.com/FiberJW/stature",
@@ -24,12 +32,14 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "bs-platform": "^3.0.0",
-    "husky": "^0.15.0-rc.8",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.10.2"
+    "bs-platform": "^7.3.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.7",
+    "prettier": "^2.0.5"
   },
   "dependencies": {
-    "reason-react": "^0.4.1"
+    "reason-react": "^0.7.1",
+    "reason-react-compat": "^1.0.1",
+    "reason-react-update": "^1.0.0"
   }
 }

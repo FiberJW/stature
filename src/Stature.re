@@ -25,20 +25,21 @@ module CreateStore = (C: StoreConfig) => {
     Js.Array.forEach(f => f(newState), subscriptions^);
   };
   module Consumer = {
-    let component =
-      ReasonReact.reducerComponent(C.debugName ++ "StoreConsumer");
-    let make = (~render, _children) => {
-      ...component,
-      initialState: () => state^,
-      reducer: (action, _state) =>
-        switch (action) {
-        | ChangeState(newState) => ReasonReact.Update(newState)
-        },
-      didMount: ({send, onUnmount}) =>
-        (newState => send(ChangeState(newState)))
-        |> addSubscription
-        |> onUnmount,
-      render: ({state}) => render(state),
-    };
+    [@react.component]
+    let make = (~render, ()) =>
+      ReactCompat.useRecordApi({
+        ...ReactCompat.component,
+
+        initialState: () => state^,
+        reducer: (action, _state) =>
+          switch (action) {
+          | ChangeState(newState) => Update(newState)
+          },
+        didMount: ({send, onUnmount}) =>
+          (newState => send(ChangeState(newState)))
+          |> addSubscription
+          |> onUnmount,
+        render: ({state}) => render(state),
+      });
   };
 };
